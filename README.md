@@ -4,7 +4,7 @@ In this week project, we are helping out the Election Board of Colorado to get a
 
 ## Overview of Election Audit
 
-Per initial request from the *Election Commission*, the election audit included five results such as total number of votes cast, a complete list of candidates who received votes, total votes for each candidate, the percentage of these votes and the winner of the election.  Now, we need to expand these results so the audit could be completed and also includes:
+The initial request from the *Election Commission* included five results such as total number of votes cast, a complete list of candidates who received votes, total votes for each candidate, the percentage of these votes and the winner of the election.  Now, we need to expand these results so the audit could be completed and also includes:
 
 1. The vote turnout for each county
 2. The percentage of votes from each county out of the total count.
@@ -29,7 +29,7 @@ Total Votes: 369,711
 
 2. Number of votes and the percentage of total votes for each county in the precinct. 
 
-To find the number of votes cast by county, we need to identify first unique county names in the data and then count the number of rows whose value in the county column corresponds to each identified unique county.  From this process, there are three counties identified in the data : *Jefferson, Denver, Arapahoe*. Bellow it is the total number of votes for each county and their corresponding percentages.
+To find the number of votes cast by county, we first need to identify unique county names in the data and then count the number of rows whose value in the county column corresponds to each identified unique county.  From this process, there are three counties identified in the data : *Jefferson, Denver, Arapahoe*. Bellow it is the total number of votes for each county and their corresponding percentages.
 
 ```vb
 County Votes:
@@ -71,7 +71,7 @@ Winning Vote Count: 272,892
 Winning Percentage: 73.8%
 -------------------------
 ```
-The main part of the *Python* script that calculates the above results is shown below. The entire script besides to compute the results of the election-audit, prints them in the terminal at the same time the code is run and also saves the results in a text file.  The entire script can be found in [PyPoll_Challenge.py](https://github.com/LeidyDoradoM/ElectionAnalysis_Challenge/tree/main/PyPoll_Challenge.py )
+The main part of the *Python script* that calculates the above results is shown below. The entire script besides to compute the results of the election-audit, prints them in the terminal at the same time the code is run and also saves the results in a text file.  The entire script can be found in [PyPoll_Challenge.py](https://github.com/LeidyDoradoM/ElectionAnalysis_Challenge/tree/main/PyPoll_Challenge.py )
 ```vb
 # Read the csv and convert it into a list of dictionaries
 with open(file_to_load) as election_data:
@@ -108,6 +108,6 @@ with open(file_to_load) as election_data:
 
 ## Election-Audit Summary
 
-This script was implemented to audit a congressional election at disctict level, however, it can be extended to audit any type of election, where votes can be cast from another electoral districts to get winner candidates at state level such as **Senate** or **Presidential** elections.  In these cases, we need that the script makes the counting of votes for the 8 congressional districts in which the Colorado state has been divided. Assuming we have access to the data from the another 7 congressional districts, we need to run this script 8 times and save the results for each congressional district.  Then, the winner candidate ( in the case of Presidential election), can be determined by considering the candidate with the largest number of votes among the 8 winner candidates for each electoral district.  In the Senate election, we need to elect two candidates, so among the 8 winner candidates, we need to choose the first two candidates with the two largest numbers of votes.
+This script was implemented to audit a congressional election at disctict level, however, it can be extended to audit any type of election, where votes can be cast from another electoral districts to get the winner candidates at state level such as **Senate** or **Presidential** elections.  In these cases, we need that the script makes the counting of votes for the 8 congressional districts in which the Colorado state has been divided. Assuming we have access to the data from the another 7 congressional districts, we need to run this script 8 times and save the results for each congressional district.  Then, the winner candidate ( in the case of Presidential election), can be determined by considering the candidate with the largest number of votes among the 8 winner candidates for each electoral district.  In the Senate election, we need to elect two candidates, so among the 8 winner candidates, we need to choose the first two candidates with the two largest numbers of votes.
 
-In order to get this extension in the code, we would need to authomate the process by adding a for loop that iterates through the 8 congressional districts and within this loop enclosed the code that we already have implemented.  Besides, we need to add the lines that save the results for each district in a dictionary, where the keys are the districts and the values are lists conatining the diverse results that we already have considered (winner of the district, counties with largest count of votes, list of candidates and their corresponding votes). Then, to determine the winner candidate(s) we access the dictionary by each key and keep from the value-list only the winner candidate information.  Once we have the access to each winner for each district we can choose the candidate with the largest number of votes.
+In order to get this extension in the code, we would need to authomate the process by adding a for loop that iterates through the 8 congressional districts and within this loop enclose the code that we already have implemented.  Besides, we need to add the lines that save the results for each district in a dictionary, where the keys are the districts and the values are lists conatining the diverse results that we already have considered (winner of the district, counties with largest count of votes, list of candidates and their corresponding votes). Then, to determine the winner candidate(s) we access the dictionary by each key and keep from the values-list only the winner candidate information.  Once we have the access to each winner for each district we can choose the candidate with the largest number of votes.
